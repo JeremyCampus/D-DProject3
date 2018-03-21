@@ -41,7 +41,7 @@ class BattleField {
 				System.out.println("---");
 				System.out.println("Creer un/des personnages ? = 1");
 				System.out.println("Afficher la liste des personnages ? = 2");
-				System.out.println("Menu de gestion des personnages ? = 3");
+				System.out.println("Selectionner un personnage ? = 3");
 				System.out.println("Afficher un tableau de 5 objet ? = 4");
 				System.out.println("Quitter = 5");
 				System.out.println("Une division par 0 ? = 6");
@@ -67,7 +67,6 @@ class BattleField {
 							System.out.println("");
 							System.out.println("Voici le hero : " + listeHeroes.get(i).getName() + " | Numero : " + i);
 							listeHeroes.get(i).afficher();
-
 						}			  
 						break;        
 					case "3":
@@ -87,7 +86,7 @@ class BattleField {
 						break;  
 						
 					case "4":
-					creationALaChaine();
+						creationALaChaine();
 						;
 						break;       
 					case "5":
@@ -119,17 +118,18 @@ public static void gestionDuHero(int numHero){
 		listeHeroes.get(numHero).mettreAJour();
 		System.out.println("");
 		System.out.println("");
-		System.out.println("");
+		System.out.println("VOUS AVEZ SELECTIONNE :");
 		System.out.println("_____________________________________________________________________");
 		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
 		System.out.println("---");
-		System.out.println("Afficher votre personnage ? = 1");
+		System.out.println("Afficher toutes ses infos ? = 1");
 		System.out.println("Modifier les infos de votre personnage? = 2");
-		System.out.println("Attaquer ? = 3");
-		System.out.println("Ajouter une arme ou un sort?  = 4");
-		System.out.println("Supprimer ce personnage ?  = 5");
-		System.out.println("Quitter  = 6");
+		System.out.println("Afficher son inventaire ? = 3");		
+		System.out.println("Attaquer ? = 4");
+		System.out.println("Ajouter une arme ou un sort?  = 5");
+		System.out.println("Supprimer ce personnage ?  = 6");
+		System.out.println("Quitter  = 7");
 		System.out.println("---");
 		System.out.println("");
 		System.out.println("");
@@ -151,26 +151,29 @@ public static void gestionDuHero(int numHero){
 				listeHeroes.get(numHero).modifier();			  
 				break;        
 			case "3":
+				listeHeroes.get(numHero).afficherInventory();			  
+				break;
+			case "4":
 				listeHeroes.get(numHero).attaquer();			  
 				break;        
-			case "4":
+			case "5":
 				listeHeroes.get(numHero).ajouterArmeSpell();			  
 				break;        
-			case "5":
-			System.out.println("Etes vous sur ?");
-			System.out.println("y(Yes), n(No)");
-			String validSuppr = sc.nextLine();
-			if(validSuppr == "y" || validSuppr == "Y")
-			{
-				listeHeroes.remove(numHero);
-				exit = true;
-			}
-				break; 
 			case "6":
+				System.out.println("Etes vous sur ?");
+				System.out.println("y(Yes), n(No)");
+				String validSuppr = sc.nextLine();
+				if(validSuppr == "y" || validSuppr == "Y")
+				{
+					listeHeroes.remove(numHero);
+					exit = true;
+				}
+				break; 
+			case "7":
 				exit = true;
 				break;        
 			default:
-		System.out.println("Erreur");
+				System.out.println("Erreur");
 				break;        
 		}
 	}while(exit != true);
@@ -196,17 +199,19 @@ public static void gestionDuHero(int numHero){
 		}
 
 
-//-------------------------CREATION PERSONNAGE OLD
+	//-------------------------CREATION PERSONNAGE
 	public static void createCharacter()
 	{
 		Scanner sc = new Scanner(System.in);
+		Scanner sc2 = new Scanner(System.in);
 		Character myHero = null;
 
-		String vocation = "";
+		int vocation = 0;
 		System.out.println("Guerrier(1) ou Mage(2) ?");
-		vocation = sc.nextLine();
+		vocation = sc2.nextInt();
+		
 
-		String myName ="";
+		String myName = "";
 		System.out.println("Quel est son nom ?");
 		myName = sc.nextLine();
 
@@ -220,7 +225,7 @@ public static void gestionDuHero(int numHero){
 		System.out.println("Quel est votre Strenght ?");
 		newStrenght = sc.nextInt();	
 
-		if(vocation == "1"){
+		if(vocation == 1){
 			myHero = new Guerrier(myName, newImage, newLife, newStrenght);
 		}else{
 			myHero = new Mage(myName, newImage, newLife, newStrenght);

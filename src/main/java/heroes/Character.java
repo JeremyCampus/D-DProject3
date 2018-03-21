@@ -117,6 +117,12 @@ class Character {
 		
 	}
 
+	
+	public void afficherInventory(){
+		
+	}
+
+	
 	public static void main(String[] args) {
 	}
 }

@@ -1,13 +1,17 @@
 package main.java.heroes;
 
+import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.util.List;
+import java.util.ListIterator;
 
 class Mage extends Character{
-	
+	static List<Arme> inventory = new ArrayList<Arme>();		
 	protected Spell monSort = new Spell();
 	protected int damages = strength + monSort.getSpellAttackLevel();
 	protected boolean shieldPotion = false;
+	protected String metier = "Guerrier";
+	
 	
 	public Mage() {
 		super();
@@ -62,6 +66,7 @@ class Mage extends Character{
 		System.out.println("_________________________________________");
 		System.out.println("");
 		System.out.println("Your Name : " + name);
+		System.out.println("Your Profession : " + metier);		
 		System.out.println("Your Image : " + image);
 		System.out.println("Your Life : " + life);
 		System.out.println("Your strength : " + strength);
@@ -85,6 +90,25 @@ class Mage extends Character{
 		monSort.setSpellAttackLevel(str2);
 
 	}
+
+
+	public void afficherInventory(){
+		System.out.println("______________||_INVENTAIRE_||______________");
+		System.out.println("");
+		System.out.println("Your Name : " + name);
+		System.out.println("Your inventory has " + inventory.size() + " Weapons.");		
+		for(int i = 0; i < inventory.size(); i++){
+			System.out.println("");
+			System.out.println("");
+			System.out.println("Voici l'arme : " + inventory.get(i).getNameWeapon() + " | Numero : " + i);
+			System.out.println("Voici sa Puissance : " + inventory.get(i).getWeaponAttackLevel());;
+		}	
+
+		// System.out.println("Your weapon is " + monArme.getNameWeapon() + " who deliver " + monArme.getWeaponAttackLevel() + " damages.");
+
+		System.out.println("_________________________________________");
+	}
+
 
 	public static void main(String[] args) {
 
