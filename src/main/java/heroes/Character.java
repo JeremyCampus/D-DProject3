@@ -66,8 +66,12 @@ class Character {
 		strength = newStreght;
 	}
 
-
-
+	public String toString() {
+		return  "Your Name : " + name 
+		+ "Your Image : " + image 
+		+"Your Life : " + life +" --- "
+		 +"_________________________________________";
+	}
 	public void afficher() {
 		System.out.println("_________________________________________");
 		System.out.println("");
@@ -114,15 +118,12 @@ class Character {
 	
 
 	public void ajouterArmeSpell(){
-		
 	}
 
-	
 	public void afficherInventory(){
-		
 	}
 
-	
-	public static void main(String[] args) {
-	}
+	public void gestionInventory(){
+	}		
+
 }

@@ -30,9 +30,4 @@ class Arme{
 	public void setWeaponAttackLevel(int newWeaponAttackLevel){
 		weaponAttackLevel = newWeaponAttackLevel;
 	}
-
-
-	public static void main(String[] args) {
-
-	}
 }

@@ -9,12 +9,8 @@ import java.util.ListIterator;
 class BattleField {
 
 	static List<Character> listeHeroes = new ArrayList<Character>();
-	// static Object listeHeroes[] = new warr() ;
 	
 	public BattleField(){
-		// for (Guerrier heroes : listeHeroes) {   
-		// 	heroes = new Guerrier("Guerrier du Nord");
-		// }	
 	}
 		
 	public void newCharacter(){
@@ -32,9 +28,6 @@ class BattleField {
 		boolean quitter = false;	
 		clearZone();		  
 			do{
-				System.out.println("");
-				System.out.println("");
-				System.out.println("");
 				System.out.println("_____________________________________________________________________");
 				System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 				System.out.println("_____________________________________________________________________");
@@ -66,7 +59,7 @@ class BattleField {
 							System.out.println("");
 							System.out.println("");
 							System.out.println("Voici le hero : " + listeHeroes.get(i).getName() + " | Numero : " + i);
-							listeHeroes.get(i).afficher();
+							System.out.println(listeHeroes.get(i));
 						}			  
 						break;        
 					case "3":
@@ -78,7 +71,7 @@ class BattleField {
 								System.out.println("Voici le hero : " + listeHeroes.get(i).getName() + " | Numero : " + i);
 							}	
 							numHero = sc.nextInt();	
-							listeHeroes.get(numHero).afficher();
+							System.out.println(listeHeroes.get(numHero));
 							gestionDuHero(numHero);	
 						} catch (Exception e) {
 							System.out.println("erreur");
@@ -87,7 +80,6 @@ class BattleField {
 						
 					case "4":
 						creationALaChaine();
-						;
 						break;       
 					case "5":
 						quitter = true;
@@ -118,7 +110,7 @@ public static void gestionDuHero(int numHero){
 		listeHeroes.get(numHero).mettreAJour();
 		System.out.println("");
 		System.out.println("");
-		System.out.println("VOUS AVEZ SELECTIONNE :");
+		System.out.println("VOUS AVEZ SELECTIONNE : " +listeHeroes.get(numHero).getName());
 		System.out.println("_____________________________________________________________________");
 		System.out.println("|||||||||||||||||||||| QUE VOULEZ VOUS FAIRE ? ||||||||||||||||||||||");
 		System.out.println("_____________________________________________________________________");
@@ -126,10 +118,11 @@ public static void gestionDuHero(int numHero){
 		System.out.println("Afficher toutes ses infos ? = 1");
 		System.out.println("Modifier les infos de votre personnage? = 2");
 		System.out.println("Afficher son inventaire ? = 3");		
-		System.out.println("Attaquer ? = 4");
+		System.out.println("Gestion de son inventaire ? = 4");		
 		System.out.println("Ajouter une arme ou un sort?  = 5");
-		System.out.println("Supprimer ce personnage ?  = 6");
-		System.out.println("Quitter  = 7");
+		System.out.println("Attaquer ? = 6");
+		System.out.println("Supprimer ce personnage ?  = 7");
+		System.out.println("Quitter  = 8");
 		System.out.println("---");
 		System.out.println("");
 		System.out.println("");
@@ -145,7 +138,7 @@ public static void gestionDuHero(int numHero){
 		switch (str2)
 		{
 			case "1":
-				listeHeroes.get(numHero).afficher();			  
+				System.out.println(listeHeroes.get(numHero));			  
 				break;        
 			case "2":
 				listeHeroes.get(numHero).modifier();			  
@@ -154,12 +147,15 @@ public static void gestionDuHero(int numHero){
 				listeHeroes.get(numHero).afficherInventory();			  
 				break;
 			case "4":
-				listeHeroes.get(numHero).attaquer();			  
-				break;        
+				listeHeroes.get(numHero).gestionInventory();			  
+				break;
 			case "5":
 				listeHeroes.get(numHero).ajouterArmeSpell();			  
 				break;        
 			case "6":
+				listeHeroes.get(numHero).attaquer();			  
+				break; 
+			case "7":
 				System.out.println("Etes vous sur ?");
 				System.out.println("y(Yes), n(No)");
 				String validSuppr = sc.nextLine();
@@ -169,7 +165,7 @@ public static void gestionDuHero(int numHero){
 					exit = true;
 				}
 				break; 
-			case "7":
+			case "8":
 				exit = true;
 				break;        
 			default:
@@ -194,7 +190,7 @@ public static void gestionDuHero(int numHero){
 			tableauGuerrier[3]=myHero4;
 			tableauGuerrier[4]=myHero4;
 			for(int i = 0; i < 5; i++){
-			System.out.println("Voici le hero : " + tableauGuerrier[i].getName());
+				System.out.println("Voici le hero : " + tableauGuerrier[i].getName());
 			}
 		}
 
